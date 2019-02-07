@@ -62,7 +62,7 @@ public class Demo1 {
 //                System.out.print(list+" ");
                 System.out.print(list.get(3));
                 System.out.println(" ");
-                System.out.println("Sucessfull"+ list.get(3));
+                System.out.println("Sucessfull");
 
 
             }
