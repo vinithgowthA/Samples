@@ -63,7 +63,6 @@ public class Demo1 {
                 System.out.print(list.get(3));
                 System.out.println(" ");
                 System.out.println("Sucessfull");
-                System.out.println("Fail");
 
             }
 
