@@ -1,16 +1,13 @@
 package Samples;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.*;
 
-import org.apache.commons.exec.ExecuteException;
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.LogManager;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -22,8 +19,8 @@ import java.util.concurrent.TimeUnit;
 public class MyDemo {
 
     private static final Logger logger = LogManager.getLogger(MyDemo.class);
-
-    public static void main(String[] args) throws InterruptedException, IOException {
+    @Test
+    public void demo() throws InterruptedException {
 
         WebDriver driver;
         System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
@@ -60,22 +57,24 @@ public class MyDemo {
         WebElement nalan = driver.findElement(By.xpath("//span[text()='NALAN']"));
         nalan.click();
 
+        logger.info("Sucesswinner" + nalan);
+
         WebElement nanba = driver.findElement(By.xpath("//span[text()='NANBA']"));
         nanba.click();
 
         driver.switchTo().defaultContent();
         Thread.sleep(5000);
 
-        //get no of windows
         Set<String> window = driver.getWindowHandles();
         Iterator<String> itr = window.iterator();
         List<String> list = new ArrayList<>();
-        String child = "";
+        String child;
         while (itr.hasNext()) {
-            child = itr.next();
-            list.add(child);
-        }
-        driver.switchTo().window(child);
+                child = driver.switchTo().window(itr.next()).toString();
+                list.add(child);
+                System.out.println(child);
+            }
+
 
         Thread.sleep(5000);
         WebElement iniaUsername = driver.findElement(By.id("username"));
@@ -87,34 +86,30 @@ public class MyDemo {
         WebElement login = driver.findElement(By.id("login-submit"));
         login.click();
 
-//            driver.navigate().back();
         Thread.sleep(1000);
-//           driver.navigate().forward();
-//           driver.close();
 
         System.out.println("End");
         Thread.sleep(5000);
 
-
-       for (int i=0; i< list.size(); i++) {
-           if (i != 0) {
-               driver.switchTo().window(list.get(i) );
-               driver.close();
-           }
-       }
-
-
-        try {
-            FileInputStream fis  = new FileInputStream("D:\\Laision\\2019\\Jan - 31\\Text.txt");
-            String data = IOUtils.toString(fis,"UTF-8");
-            System.out.print(data);
-            FileOutputStream fos = new FileOutputStream("D:\\Laision\\2019\\Jan - 31\\Text2.txt");
-            fos.write(data.getBytes());
-
-        } catch (ExecuteException e){
-            e.printStackTrace();
-
+        for(int i=0; i < list.size(); i++) {
+            if(i!=0) {
+                driver.switchTo().window(itr.next());
+                driver.close();
+            }
         }
+
+
+//        try {
+//            FileInputStream fis  = new FileInputStream("D:\\Laision\\2019\\Jan - 31\\Text.txt");
+//            String data = IOUtils.toString(fis,"UTF-8");
+//            System.out.print(data);
+//            FileOutputStream fos = new FileOutputStream("D:\\Laision\\2019\\Jan - 31\\Text2.txt");
+//            fos.write(data.getBytes());
+//
+//        } catch (ExecuteException e){
+//            e.printStackTrace();
+//
+//        }
     }
 }
 

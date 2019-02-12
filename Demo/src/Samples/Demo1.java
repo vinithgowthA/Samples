@@ -52,7 +52,6 @@ public class Demo1 {
                     if (sh.getRow(i).getCell(j) != null) {
 
                         DataFormatter dmt = new DataFormatter();
-
                         String values = dmt.formatCellValue(sh.getRow(i).getCell(j));
                         list.add(values);
 
