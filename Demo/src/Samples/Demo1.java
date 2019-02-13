@@ -52,7 +52,6 @@ public class Demo1 {
                     if (sh.getRow(i).getCell(j) != null) {
 
                         DataFormatter dmt = new DataFormatter();
-
                         String values = dmt.formatCellValue(sh.getRow(i).getCell(j));
                         list.add(values);
 
@@ -63,7 +62,7 @@ public class Demo1 {
                 System.out.print(list.get(3));
                 System.out.println(" ");
                 System.out.println("Sucessfull");
-                System.out.println("Fail");
+
 
             }
 
