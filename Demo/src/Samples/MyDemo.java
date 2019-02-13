@@ -45,7 +45,7 @@ public class MyDemo {
 
         WebElement upload = driver.findElement(By.name("ctl00$ContentHolder$OrderCompendiumUploadBtn"));
         upload.click();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
 
 
 //        Runtime.getRuntime().exec("D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\text.exe D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\Lab\\WWMG Laboratory_Orders_and_Results.cmp");
