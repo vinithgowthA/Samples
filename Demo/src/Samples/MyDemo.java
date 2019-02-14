@@ -50,12 +50,12 @@ public class MyDemo {
 
 //        Runtime.getRuntime().exec("D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\text.exe D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\Lab\\WWMG Laboratory_Orders_and_Results.cmp");
 
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("D:\\Laision\\2019\\Feb\\Feb - 08\\Bioreference\\Lab\\screenshot.jpeg"));
 
 //        WebElement username = driver.findElement(By.id("username"));
-//        username.sendKeys("viniths");
+//        username.sendKeys("viniths"   );
 //
 //        WebElement pwd = driver.findElement(By.id("password"));
 //        pwd.sendKeys("Sucesswinner@234");
