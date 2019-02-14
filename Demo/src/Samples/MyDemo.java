@@ -41,7 +41,7 @@ public class MyDemo {
         WebElement login = driver.findElement(By.name("ctl00$ContentHolder$submit"));
         login.click();
 
-        Thread.sleep(4000);
+        Thread.sleep(3000);
 
         WebElement upload = driver.findElement(By.name("ctl00$ContentHolder$OrderCompendiumUploadBtn"));
         upload.click();
