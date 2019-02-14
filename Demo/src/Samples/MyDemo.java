@@ -55,7 +55,7 @@ public class MyDemo {
         FileUtils.copyFile(file, new File("D:\\Laision\\2019\\Feb\\Feb - 08\\Bioreference\\Lab\\screenshot.jpeg"));
 
 //        WebElement username = driver.findElement(By.id("username"));
-//        username.sendKeys("viniths");
+//        username.sendKeys("viniths"   );
 //
 //        WebElement pwd = driver.findElement(By.id("password"));
 //        pwd.sendKeys("Sucesswinner@234");
