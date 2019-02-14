@@ -12,5 +12,6 @@
     <orderEntry type="library" exported="" name="Log4j" level="project" />
     <orderEntry type="library" exported="" name="testNG" level="project" />
     <orderEntry type="library" exported="" name="Slf4j" level="project" />
+    <orderEntry type="library" exported="" name="FileUtils" level="project" />
   </component>
 </module>
