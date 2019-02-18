@@ -3,28 +3,28 @@ package Samples;
 import java.io.File;
 import java.util.*;
 
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+import org.testng.ITestListener ;
+import org.testng.annotations.*;
+import org.testng.annotations.Listeners;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
-
 public class MyDemo {
 
     private static final Logger logger = LogManager.getLogger(MyDemo.class);
-    @Test
-    public void demo() throws InterruptedException, IOException {
+        private WebDriver driver;
 
-        WebDriver driver;
+    @BeforeTest
+     public void demo() throws InterruptedException, IOException {
+
         System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -50,9 +50,23 @@ public class MyDemo {
 
 //        Runtime.getRuntime().exec("D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\text.exe D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\Lab\\WWMG Laboratory_Orders_and_Results.cmp");
 
-        Thread.sleep(7000);
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("D:\\Laision\\2019\\Feb\\Feb - 08\\Bioreference\\Lab\\screenshot.jpeg"));
+        Thread.sleep(7000);
+    }
+
+        @Test
+        public void demo1() throws IOException, InterruptedException {
+            Thread.sleep(8000);
+            Runtime.getRuntime().exec("D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\text.exe D:\\Laision\\2019\\Feb\\Feb - 08\\WWMG\\Lab\\WWMG Laboratory_Orders_and_Results.cmp");
+            Thread.sleep(10000);
+        }
+
+        @AfterSuite(alwaysRun = true)
+        public void quite() {
+            driver.quit();
+        }
+
 
 //        WebElement username = driver.findElement(By.id("username"));
 //        username.sendKeys("viniths");
@@ -134,6 +148,6 @@ public class MyDemo {
 //            e.printStackTrace();
 //
 //        }
-    }
+
 }
 

@@ -29,19 +29,19 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 public class Demo1 {
 
     public static void main (String[] args) {
-//        WebDriver driver;
-//
-//        System.setProperty("webdriver.chrome.driver",
-//                "D:\\Tools\\chromedriver.exe");
-//        driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-//        driver.get("https://webmail.object-frontier.com/");
+        WebDriver driver;
+
+        System.setProperty("webdriver.chrome.driver",
+                "D:\\Tools\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.get("https://webmail.object-frontier.com/");
 
         List<String> list = new ArrayList<>();
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream("D:\\ProjectSamples\\Demo\\Sheet.xlsx");
+            fis = new FileInputStream("D:\\ProjectSampel\\Samples\\Demo\\Book1.xlsx");
             Workbook wb = WorkbookFactory.create(fis);
             Sheet sh = wb.getSheetAt(0);
             int rowsize = sh.getLastRowNum();
@@ -54,16 +54,18 @@ public class Demo1 {
                         DataFormatter dmt = new DataFormatter();
                         String values = dmt.formatCellValue(sh.getRow(i).getCell(j));
                         list.add(values);
+                        System.out.print(list.get(0));
+                        switch (list.indexOf(0)) {
+
+                        }
+                        WebElement username = driver.findElement(By.id("User"));
+                        username.sendKeys();
+                        WebElement pwd = driver.findElement(By.id("Password"));
+                        pwd.sendKeys();
 
 
                     }
                 }
-//                System.out.print(list+" ");
-                System.out.print(list.get(3));
-                System.out.println(" ");
-                System.out.println("Sucessfull");
-
-
             }
 
         } catch (Exception e) {
@@ -71,7 +73,7 @@ public class Demo1 {
         } finally {
             try {
                 fis.close();
-//                driver.close();
+                driver.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
