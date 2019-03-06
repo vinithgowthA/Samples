@@ -13,5 +13,6 @@
     <orderEntry type="library" exported="" name="testNG" level="project" />
     <orderEntry type="library" exported="" name="Slf4j" level="project" />
     <orderEntry type="library" exported="" name="FileUtils" level="project" />
+    <orderEntry type="library" name="Desired Capablities Remote Driver" level="project" />
   </component>
 </module>
