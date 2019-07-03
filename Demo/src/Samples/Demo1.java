@@ -42,13 +42,14 @@ public class Demo1 {
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("D:\\ProjectSampel\\Samples\\Demo\\Book1.xlsx");
+
             Workbook wb = WorkbookFactory.create(fis);
             Sheet sh = wb.getSheetAt(0);
             int rowsize = sh.getLastRowNum();
             int colsize = sh.getRow(0).getLastCellNum();
-            for(int i=1; i<=rowsize; i++){
+            for(int i=1; i<=rowsize; i++) {
                 list.clear();
-                for (int j=0; j<=colsize; j++) {
+                for (int j = 0; j <= colsize; j++) {
                     if (sh.getRow(i).getCell(j) != null) {
 
                         DataFormatter dmt = new DataFormatter();

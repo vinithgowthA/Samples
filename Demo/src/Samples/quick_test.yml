@@ -1,0 +1,9 @@
+execution:
+- executor: selenium
+  scenario: open_page
+
+scenarios:
+  open_page:
+    script: 'D:\ProjectSampel\Samples\Demo\src\Samples\Java_Samples.java'
+    
+     

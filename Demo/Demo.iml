@@ -14,5 +14,15 @@
     <orderEntry type="library" exported="" name="Slf4j" level="project" />
     <orderEntry type="library" exported="" name="FileUtils" level="project" />
     <orderEntry type="library" name="Desired Capablities Remote Driver" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://D:/Tools/Json" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://D:/Tools/Json" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
