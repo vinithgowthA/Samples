@@ -76,9 +76,7 @@ public class Java_Samples {
                 String[] words=s1.split("t",3);//splits the string based on string
 //using java foreach loop to print elements of string array
                 for(String w:words){
-                    System.out.println(w);
-                }
-            }}
+                    System.out.println(w);}}
 
 
 //
@@ -348,7 +346,7 @@ public class Java_Samples {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 //        exactDueDates = formatter.format(before);
 //        return exactDueDates;
-        public static String reverseRecursively(String str) {
+        public String reverseRecursively(String str) {
 
             if (str.length() < 1) {
                 return str;
@@ -360,8 +358,9 @@ public class Java_Samples {
 //            Java_Samples jv = new Java_Samples();
             String str = "I am batman";
 //            String str1 = jv.reverseRecursively(str);
-            System.out.println(reverseRecursively(str));
-//        }
+        Java_Samples s = new Java_Samples();
+            System.out.println(s.reverseRecursively(str));}
+        }
 //@Override
 //protected void finalize()
 //{
