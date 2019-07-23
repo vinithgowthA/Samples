@@ -17,7 +17,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
-//import java.io.*;
+import java.io.*;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import sun.rmi.runtime.Log;
 
 import java.util.stream.Collectors;
 
-public class Java_Samples {
+public class Java_Samples extends MyDemo {
 
     private static final Logger logger = LogManager.getLogger(JavaClass.class);
 
@@ -65,19 +66,6 @@ public class Java_Samples {
 
 
     //
-    @Test
-    public void test() throws InterruptedException {
-//        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-//        driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
-//        driver.get("https://www.emr-link.com/labs/Login.aspx");
-                String s1="java string split method by javatpoint";
-                String[] words=s1.split("t",3);//splits the string based on string
-//using java foreach loop to print elements of string array
-                for(String w:words){
-                    System.out.println(w);}}
-
 
 //
 //        WebElement username = driver.findElement(By.name("ctl00$ContentHolder$username"));
@@ -171,13 +159,9 @@ public class Java_Samples {
 //    }
 
 
-
-
-
 //            FileInputStream fis = new FileInputStream("D:\\Laision\\2019\\Jun\\Jun - 10\\new 1.txt");
 //            String data = IOUtils.toString(fis, "UTF-8");
 //            System.out.println(data);
-
 
 
 //   public static void main(String[] args) {
@@ -242,7 +226,7 @@ public class Java_Samples {
 //        }
 
 
-        //        Action seriesOfActions = act
+    //        Action seriesOfActions = act
 //                .moveToElement(from)
 //                .clickAndHold(from)
 //                .dragAndDrop(from, to)
@@ -272,15 +256,16 @@ public class Java_Samples {
 //        System.out.println("in Test Case 1");
 //    }
 //
-//    @Test(description = "Test1 Description", priority = -2)
+//    @Test(description = "Test1 Description", priority = 0)
 //    public void testCase2() {
 //        System.out.println("in Test Case 2");
 //    }
 //
 //    @Test(description = "Test1", priority = -1)
 //    public void testCase3() {
-//        System.out.println("in Test Case 1");
+//        System.out.println("in Test Case 3");
 //    }
+//}
 
 //    @BeforeMethod(description = "Before Method")
 //    public void beforeMethod() {
@@ -334,6 +319,38 @@ public class Java_Samples {
 //        System.out.println("in After Suite");
 //    }
 
+//    public static void charcount(String str) {
+//        char[] chars =  str.toCharArray();
+//        HashMap<Character, Integer> mapChar = new HashMap<Character, Integer>();
+//        for(char c : chars) {
+//            if(mapChar.containsKey(c)) {
+//                mapChar.put(c,mapChar.get(c)+1);
+//            } else {
+//                mapChar.put(c,1);
+//            }
+//        }
+//        System.out.print(mapChar);
+//    }
+//        public static void main(String args[]) {
+//            String str  = "sdfjh sdfgjsdhjs dbgjmhjksdge";
+//            charcount(str);
+//        }
+
+    @Test
+    public void clac() throws IOException, InterruptedException {
+        demo();
+      Select sel = new Select(driver.findElement(By.xpath("")));
+      List<WebElement> selection = sel.getOptions();
+      for(int i=0; i<selection.size(); i++) {
+          String values = selection.get(i).getAttribute("values");
+          System.out.print(values);
+          if(values.equals("India")) {
+              sel.selectByVisibleText(values);
+          }
+      }
+    }
+}
+
 
 //    public String demo() {
 //        String exactDueDates = "";
@@ -346,21 +363,21 @@ public class Java_Samples {
 //        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 //        exactDueDates = formatter.format(before);
 //        return exactDueDates;
-        public String reverseRecursively(String str) {
-
-            if (str.length() < 1) {
-                return str;
-            }
-            return reverseRecursively(str.substring(1)) + str.charAt(0);
-        }
-
-    public static void main(String args[]) {
-//            Java_Samples jv = new Java_Samples();
-            String str = "I am batman";
-//            String str1 = jv.reverseRecursively(str);
-        Java_Samples s = new Java_Samples();
-            System.out.println(s.reverseRecursively(str));}
-        }
+//        public String reverseRecursively(String str) {
+//
+//            if (str.length() < 1) {
+//                return str;
+//            }
+//            return reverseRecursively(str.substring(1)) + str.charAt(0);
+//        }
+//
+//    public static void main(String args[]) {
+////            Java_Samples jv = new Java_Samples();
+//            String str = "I am batman";
+////            String str1 = jv.reverseRecursively(str);
+//        Java_Samples s = new Java_Samples();
+//            System.out.println(s.reverseRecursively(str));}
+//        }
 //@Override
 //protected void finalize()
 //{
