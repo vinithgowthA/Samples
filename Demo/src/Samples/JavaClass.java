@@ -29,5 +29,9 @@ public interface JavaClass {
     String W3H_Analysis = "What : Customers needs to update their data’s.  How : Validate the data's with the previous lab file and copy & run the macro's.  Why : This is a compendium update file. So the format and the macros should be same as the previous version.  WHY NOT : As per the client request this is a only way of processing.";
     String UNIT_test_Result = "Unit test done. The formats are correct and the data's are updated in the production.";
     String Code_Review_Result = "Code review done. No code changes needed";
+    String USERNAME = "username";
+    String PASSWORD = "password";
+    String First_ID = "1";
+    String SECOND_ID = "2";
 
 }

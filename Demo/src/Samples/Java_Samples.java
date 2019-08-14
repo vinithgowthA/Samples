@@ -10,12 +10,18 @@ import org.json.JSONObject;
 import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import static Samples.JavaClass.*;
+import static Samples.ClassConstructor.*;
+
 
 import java.io.*;
 import java.io.IOException;
@@ -26,43 +32,163 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import sun.rmi.runtime.Log;
+import static Samples.MyDemo.*;
 
 import java.util.stream.Collectors;
 
-public class Java_Samples extends MyDemo {
+public class Java_Samples {
 
     private static final Logger logger = LogManager.getLogger(JavaClass.class);
 
+    private ClassConstructor classCons = new ClassConstructor();
 
     private WebDriver driver;
-   /* public static String removeChar(String s, char c) {
 
-        String r = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != c) {
-                r += s.charAt(i);
+    @Test
+    public void textType() throws InterruptedException, IOException {
+        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, capabilities);
+        capabilities.setVersion("57");
+        System.out.println(capabilities.getVersion());
+        driver.navigate().to("https://www.emr-link.com/labs/Login.aspx");
 
-            }
-        }
-        return r;
-    }*/
+        Thread.sleep(4000);
 
-//        public static void main(String[]strArray ){
-////            String s1 = "Vinith*s";
-////            System.out.print(removeChar(s1, '*'));
-//            String a = "Vinith";
-//            String b = "Sekaran";
-//            a = a+b;
+//        FileReader reader=new FileReader("D:\\ProjectSampel\\Samples\\Demo\\src\\Samples\\properties.properties");
 //
-//            b = a.substring(0,a.length()-b.length());
-//            a=a.substring(b.length());
-//
-//            System.out.print("a = "+a  +" b = "+ b);
+//        Properties p=new Properties();
+//        p.load(reader);
+
+        WebElement element1 = driver.findElement(By.name("ctl00$ContentHolder$username"));
+        element1.sendKeys(JavaClass.USERNAME);
+
+        Thread.sleep(2000);
+
+        WebElement element = driver.findElement(By.name("ctl00$ContentHolder$password"));
+        element.sendKeys(JavaClass.PASSWORD);
+
+        WebElement submit = driver.findElement(By.name("ctl00$ContentHolder$submit"));
+        submit.click();
 
 
+//        Set<String> window = driver.getWindowHandles();
+//        Iterator<String> itr = window.iterator();
+//        ArrayList<String> list = new ArrayList<>();
+//        String child;
+//        while (itr.hasNext()) {
+//            child = itr.next();
+//            driver.switchTo().window(child);
 //
 //        }
+//
+//        Thread.sleep(2000);
+//        Actions act = new Actions(driver);
+//        act.keyDown(Keys.CONTROL).sendKeys(Keys.HOME).click().build().perform();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (i != 0) {
+//                driver.switchTo().window(list.get(i));
+//                driver.close();
+//            }
+//        }
+    }
+
+    @DataProvider(name = "moreDatas")
+    public Object[][] moreDatas() {
+        return sample();
+    }
+
+    @Test(invocationCount = 1000, threadPoolSize = 2, timeOut = 1)
+    public void listDemo() {
+        System.out.println("Thread id: " + Thread.currentThread().getId());
+
+    }
+
+
+
+
+
+
+        /*for (int i = 0; i<list.size(); i++) {
+            for (int j=i+1; j<=list.size();j++) {
+
+                if(!list.get(i).equals(list.get(j))) {
+
+                    mapValues.put(001,classCon);
+                    mapValues.put(002,classCon1);
+                    mapValues.put(003,null);
+                    mapValues.put(003,classCon3);
+                }
+            }
+        }*/
+
+            /*for(Map.Entry<Integer, ClassConstructor> values : mapValues.entrySet()) {
+                int id = values.getKey();
+                ClassConstructor fullvalues = values.getValue();
+                if (fullvalues==null) {
+                    System.out.println("Null");
+                }
+                    else{
+                       System.out.println(id+ " "+ fullvalues.id+" "+fullvalues.name);
+
+                    }
+                }*/
+
+
+//    public static String removeChar(String str, char c) {
+//        String r = "";
+//       char[] c1 = str.toCharArray();
+//       for (char c3 :c1) {
+//            if (c3 != c) {
+//                r += c3;
+//            }
+//        }
+//         return r;
 //    }
+//
+//    public static void main(String[] args) {
+//        String str1 = "Vinith*s";
+//        System.out.print(removeChar(str1, '*'));
+//    }
+//}
+
+//    @Test
+//    public static void removeDuplicate() {
+//        ArrayList<Integer> str = new ArrayList<>();
+//        str.add(34);
+//        str.add(345);
+//        str.add(3443545);
+//        str.add(34);
+//        str.add(35);
+//
+//        int high = 0;
+//        for (int i = 0; i < str.size(); i++) {
+//            for (int j = i+1; j<str.size(); j++) {
+//                if (str.get(i).equals(str.get(j))) {
+//                    if(high<str.get(i)) {
+//                        high = str.get(i);
+//                    }
+//                }
+//            }
+//        }
+//        System.out.println(high);
+//    }
+
+//        ArrayList<String> nonDuplicate = new ArrayList<>();
+//        Iterator<String> itr = str.iterator();
+//        while (itr.hasNext()){
+//            String values = itr.next();
+//         if(nonDuplicate.contains(values)) {
+//             str.remove(itr);
+//         } else {
+//             nonDuplicate.add(values);
+//         }
+//
+//        }
+//    System.out.print(nonDuplicate);
 
 
     //
@@ -94,42 +220,36 @@ public class Java_Samples extends MyDemo {
 //        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 //        FileUtils.copyFile(file , new File("D:\\Laision\\2019\\image.png"));
 
-//        String s1 = null;
+    //        String s1 = null;
 //        String s2 = "";
 //        System.out.println(s1.length());
-//    public static void main() {
-//        int i;
-//        int num;
-//        for(i=1; i <=100 ; i++) {
+//    @Test
+//    public void primeNumber() {
+//        int num = 0;
+//        String primeNumber = "";
+//        for (int i = 0; i <= 100; i++) {
 //            int counter = 0;
-//            for(num =i; num>=1; num--){
-//                if (i%num==0){
-//                    counter = counter+1;
+//            for (num = i; num >= 1; num--) {
+//                if (i % num == 0) {
+//                    counter = counter + 1;
 //                }
 //            }
-//            if(counter == 2) {
-//                System.out.print(i+" ");
-//            }
+//                if(counter==2) {
+//                    primeNumber = primeNumber + i + " ";
+//                }
 //        }
 //    }
-//        System.out.print(s1);
-//   public static void main() {
-//       int num;
-//       String primnumber = "";
-//       for (int i = 1; i <= 50; i++) {
-//           int counter = 0;
-//           for ( num = i; num>= 1; num--) {
-//               if(i % num==0) {
-//                   counter = counter+1;
-//               }
-//           }
-//           if(counter==2) {
-//               System.out.print(i+" ");
-//           }
-//       }
 
-//       System.out.println("Prime numbers from 1 to 100 are :");
-//       System.out.println(primnumber);
+//    public void swapping() {
+//        String a = "Vinith";
+//        String b = "Sekaran";
+//        a = a+b;
+//        b = a.substring(0, a.length()-b.length());
+//        a = a.substring(b.length());
+//        System.out.print("A="+a + " B="+b);
+//
+//    }
+
 
 //    @Test
 //    public void file() throws IOException {
@@ -141,7 +261,7 @@ public class Java_Samples extends MyDemo {
 //                File file = new File("D:\\Laision\\2019\\Jun\\Jun - 10\\Files\\file\\file2.txt");
 //                file.createNewFile();
 //                if (file.exists()) {
-//                   fis = new FileInputStream("D:\\Laision\\2019\\Jun\\Jun - 10\\Files\\file\\file2.txt");
+//                    fis = new FileInputStream("D:\\Laision\\2019\\Jun\\Jun - 10\\Files\\file\\file2.txt");
 //                    String data = IOUtils.toString(fis, "UTF-8");
 //                    System.out.println(data);
 //                    byte[] bytes = data.getBytes();
@@ -151,6 +271,8 @@ public class Java_Samples extends MyDemo {
 //                    fw.write(bytes);
 //                }
 //            }
+//        }
+//    }
 //        }
 //        finally {
 //            fis.close();
@@ -289,7 +411,7 @@ public class Java_Samples extends MyDemo {
 //    }
 
 
-//    @BeforeSuite(description = "Before Suite")
+    //    @BeforeSuite(description = "Before Suite")
 //    public void beforeSuite5() {
 //        System.out.println("2nd Before Suite");
 //    }
@@ -319,37 +441,41 @@ public class Java_Samples extends MyDemo {
 //        System.out.println("in After Suite");
 //    }
 
-//    public static void charcount(String str) {
-//        char[] chars =  str.toCharArray();
-//        HashMap<Character, Integer> mapChar = new HashMap<Character, Integer>();
-//        for(char c : chars) {
-//            if(mapChar.containsKey(c)) {
-//                mapChar.put(c,mapChar.get(c)+1);
-//            } else {
-//                mapChar.put(c,1);
-//            }
-//        }
-//        System.out.print(mapChar);
-//    }
-//        public static void main(String args[]) {
-//            String str  = "sdfjh sdfgjsdhjs dbgjmhjksdge";
-//            charcount(str);
-//        }
+    public static HashMap charcount(String str) {
+        char[] chars = str.toCharArray();
+        HashMap<Character, Integer> mapChar = new HashMap<>();
+        for (char c : chars) {
+            if (mapChar.containsKey(c)) {
+                mapChar.put(c, mapChar.get(c) + 1);
+            } else {
+                mapChar.put(c, 1);
+            }
+        }
+       return mapChar;
+    }
 
-    @Test
-    public void clac() throws IOException, InterruptedException {
-        demo();
-      Select sel = new Select(driver.findElement(By.xpath("")));
-      List<WebElement> selection = sel.getOptions();
-      for(int i=0; i<selection.size(); i++) {
-          String values = selection.get(i).getAttribute("values");
-          System.out.print(values);
-          if(values.equals("India")) {
-              sel.selectByVisibleText(values);
-          }
-      }
+    public static void main(String[] args) {
+        String str1 = "sdfjbjksdbfgjkhsudgnjk";
+        System.out.println(charcount(str1));
     }
 }
+
+
+//    @Test
+//    public String clac() throws IOException, InterruptedException {
+//        String string = null;
+//        try {
+//            System.out.println("sdfsdf");
+//            throw new NullPointerException();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            System.out.println("Done");
+//        }
+//        return string;
+//    }
+//
 
 
 //    public String demo() {
@@ -371,13 +497,20 @@ public class Java_Samples extends MyDemo {
 //            return reverseRecursively(str.substring(1)) + str.charAt(0);
 //        }
 //
-//    public static void main(String args[]) {
-////            Java_Samples jv = new Java_Samples();
-//            String str = "I am batman";
-////            String str1 = jv.reverseRecursively(str);
-//        Java_Samples s = new Java_Samples();
-//            System.out.println(s.reverseRecursively(str));}
+
+//    public static String recursivceReverse(String str) {
+//        if (str.length() < 1) {
+//            return str;
 //        }
+//        return recursivceReverse(str.substring(1)) + str.charAt(0);
+//    }
+//
+//    public static void main(String[] args) {
+//        String str = "I am nd mjkbhdjk";
+//        System.out.println(recursivceReverse(str));
+//    }
+//}
+
 //@Override
 //protected void finalize()
 //{
@@ -482,3 +615,4 @@ public class Java_Samples extends MyDemo {
 //            long e = System.currentTimeMillis();
 //            long z = e-s;
 //            System.out.println("END time is:" + z);
+//
