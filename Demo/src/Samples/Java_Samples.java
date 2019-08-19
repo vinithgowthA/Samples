@@ -103,7 +103,7 @@ public class Java_Samples {
 
     @Test(invocationCount = 1000, threadPoolSize = 2, timeOut = 1)
     public void listDemo() {
-//        System.out.println("Thread id: " + Thread.currentThread().getId());
+        System.out.println("Thread id: " + Thread.currentThread().getId());
 
     }
 
