@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -50,29 +51,50 @@ public class Java_Samples {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, capabilities);
-        capabilities.setVersion("57");
-        System.out.println(capabilities.getVersion());
-        driver.navigate().to("https://www.emr-link.com/labs/Login.aspx");
+        driver.navigate().to("https://login.globalglaze.in/");
 
-        Thread.sleep(4000);
+        Actions actions = new Actions(driver);
+        actions.click().perform();
+
+        Thread.sleep(10000);
+        driver.quit();
+    }
+
+    @Test
+    public void textType11() {
+        String str = "dsnjkfnsjkf";
+        char[] chars = str.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(char c1 : chars) {
+            if (map.containsKey(c1)){
+                map.put(c1, map.get(c1)+1);
+            } else {
+                map.put(c1,1);
+            }
+        }
+        System.out.print(map);
+    }
+}
+
+
+
+
 
 //        FileReader reader=new FileReader("D:\\ProjectSampel\\Samples\\Demo\\src\\Samples\\properties.properties");
 //
 //        Properties p=new Properties();
 //        p.load(reader);
-
-        WebElement element1 = driver.findElement(By.name("ctl00$ContentHolder$username"));
-        element1.sendKeys(JavaClass.USERNAME);
-
-        Thread.sleep(2000);
-
-        WebElement element = driver.findElement(By.name("ctl00$ContentHolder$password"));
-        element.sendKeys(JavaClass.PASSWORD);
-
-        WebElement submit = driver.findElement(By.name("ctl00$ContentHolder$submit"));
-        submit.click();
+//
+//        WebElement element1 = driver.findElement(By.name("ctl00$ContentHolder$username"));
+//        element1.sendKeys(JavaClass.USERNAME);
+//
+//        Thread.sleep(2000);
+//
+//        WebElement element = driver.findElement(By.name("ctl00$ContentHolder$password"));
+//        element.sendKeys(JavaClass.PASSWORD);
+//
+//        WebElement submit = driver.findElement(By.name("ctl00$ContentHolder$submit"));
+//        submit.click();
 
 
 //        Set<String> window = driver.getWindowHandles();
@@ -94,18 +116,25 @@ public class Java_Samples {
 //                driver.close();
 //            }
 //        }
-    }
 
-    @DataProvider(name = "moreDatas")
-    public Object[][] moreDatas() {
-        return sample();
-    }
 
-    @Test(invocationCount = 1000, threadPoolSize = 2, timeOut = 1)
-    public void listDemo() {
-        System.out.println("Thread id: " + Thread.currentThread().getId());
-
-    }
+//    @DataProvider(name = "moreDatas")
+//    public Object[][] moreDatas() {
+//        return sample();
+//    }
+//
+//    @Test(invocationCount = 1000, threadPoolSize = 2, timeOut = 1)
+//    public void listDemo() throws IOException {
+//        System.out.println("Thread id: " + Thread.currentThread().getId());
+//
+//        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);");
+//
+//        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//        FileUtils.copyFile(file, new File(""));
+//
+//        Runtime.getRuntime().exec("");
+//
+//    }
 
 
 
@@ -440,25 +469,25 @@ public class Java_Samples {
 //    public void afterSuite() {
 //        System.out.println("in After Suite");
 //    }
+//
+//    public static HashMap charcount(String str) {
+//        char[] chars = str.toCharArray();
+//        HashMap<Character, Integer> mapChar = new HashMap<>();
+//        for (char c : chars) {
+//            if (mapChar.containsKey(c)) {
+//                mapChar.put(c, mapChar.get(c) + 1);
+//            } else {
+//                mapChar.put(c, 1);
+//            }
+//        }
+//       return mapChar;
+//    }
+//
+//    public static void main(String[] args) {
+//        String str1 = "sdfjbjksdbfgjkhsudgnjk";
+//        System.out.println(charcount(str1));
+//    }
 
-    public static HashMap charcount(String str) {
-        char[] chars = str.toCharArray();
-        HashMap<Character, Integer> mapChar = new HashMap<>();
-        for (char c : chars) {
-            if (mapChar.containsKey(c)) {
-                mapChar.put(c, mapChar.get(c) + 1);
-            } else {
-                mapChar.put(c, 1);
-            }
-        }
-       return mapChar;
-    }
-
-    public static void main(String[] args) {
-        String str1 = "sdfjbjksdbfgjkhsudgnjk";
-        System.out.println(charcount(str1));
-    }
-}
 
 
 //    @Test
