@@ -58,8 +58,6 @@ public class Java_Samples {
 
         Thread.sleep(10000);
         driver.quit();
-
-        
     }
 
     @Test
