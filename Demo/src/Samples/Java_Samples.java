@@ -45,6 +45,8 @@ public class Java_Samples {
 
     private WebDriver driver;
 
+    private final String loginButtoncolor = "rgba(68, 173, 72, 1)";
+
     @Test
     public void textType() throws InterruptedException, IOException {
         System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
@@ -53,30 +55,55 @@ public class Java_Samples {
         driver.manage().window().maximize();
         driver.navigate().to("https://login.globalglaze.in/");
 
-        Actions actions = new Actions(driver);
-        actions.click().perform();
+        WebElement loginClr = driver.findElement(By.name("ctl00$ContentPlaceHolder1$btn_go"));
+        String clr = loginClr.getCssValue("background-color");
+        if(loginButtoncolor.equals(clr)){
+            loginClr.click();
+            Thread.sleep(1000);
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            Thread.sleep(5000);
 
-        Thread.sleep(10000);
-        driver.quit();
+            WebElement userName = driver.findElement(By.name("ctl00$ContentPlaceHolder1$usernm"));
+            userName.sendKeys("ewfwewfe");
+            Thread.sleep(1000);
+            WebElement pwd = driver.findElement(By.id("ctl00_ContentPlaceHolder1_adminpassword"));
+            pwd.sendKeys("sdfsfdgreg");
+            Thread.sleep(2000);
+            loginClr.click();
+            Thread.sleep(2000);
+            Alert alert1 = driver.switchTo().alert();
+            alert1.accept();
+            Thread.sleep(5000);
+        }
+        else {
+            System.out.print("Wrong");
+        }
 
-        
     }
 
-    @Test
-    public void textType11() {
-        String str = "dsnjkfnsjkf";
-        char[] chars = str.toCharArray();
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(char c1 : chars) {
-            if (map.containsKey(c1)){
-                map.put(c1, map.get(c1)+1);
-            } else {
-                map.put(c1,1);
+    public static  String samples(String str, char c) {
+        String r = "";
+        char[] c1 = str.toCharArray();
+        for(char c2 : c1){
+            if(c2 != c) {
+                r += c2;
             }
         }
-        System.out.print(map);
+        return r;
     }
+
+    public static void main(String[] args) {
+        String str = "fdgbfb";
+        System.out.print(samples(str, 'b'));
+    }
+
+//    @AfterSuite
+//    public void quiet() {
+//        driver.quit();
+//    }
 }
+
 
 
 
@@ -87,6 +114,7 @@ public class Java_Samples {
 //        Properties p=new Properties();
 //        p.load(reader);
 //
+
 //        WebElement element1 = driver.findElement(By.name("ctl00$ContentHolder$username"));
 //        element1.sendKeys(JavaClass.USERNAME);
 //

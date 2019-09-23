@@ -2,14 +2,12 @@ package Samples;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.WebElement;
+import org.testng.ITestListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -80,5 +78,4 @@ public class Demo1 {
             }
         }
     }
-
 }

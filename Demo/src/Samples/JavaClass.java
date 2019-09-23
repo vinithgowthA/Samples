@@ -34,4 +34,6 @@ public interface JavaClass {
     String First_ID = "1";
     String SECOND_ID = "2";
 
+    void main();
+
 }
