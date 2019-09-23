@@ -74,7 +74,7 @@ public class Java_Samples {
         }
         System.out.print(map);
     }
-}
+
 
 
 
@@ -206,18 +206,29 @@ public class Java_Samples {
 //        System.out.println(high);
 //    }
 
-//        ArrayList<String> nonDuplicate = new ArrayList<>();
-//        Iterator<String> itr = str.iterator();
-//        while (itr.hasNext()){
-//            String values = itr.next();
-//         if(nonDuplicate.contains(values)) {
-//             str.remove(itr);
-//         } else {
-//             nonDuplicate.add(values);
-//         }
-//
-//        }
-//    System.out.print(nonDuplicate);
+
+    @Test
+    public static void removeDuplicate() {
+        ArrayList<Integer> str = new ArrayList<>();
+        str.add(34);
+        str.add(345);
+        str.add(3443545);
+        str.add(34);
+        str.add(35);
+        ArrayList<Integer> nonDuplicate = new ArrayList<>();
+        Iterator<Integer> itr = str.iterator();
+        while (itr.hasNext()) {
+            int values = itr.next();
+            if (nonDuplicate.contains(values)) {
+                str.remove(itr);
+            } else {
+                nonDuplicate.add(values);
+            }
+
+        }
+        System.out.print(nonDuplicate);
+    }
+}
 
 
     //
