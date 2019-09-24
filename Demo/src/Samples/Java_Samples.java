@@ -60,19 +60,18 @@ public class Java_Samples {
         driver.quit();
     }
 
-    @Test
-    public void textType11() {
-        String str = "dsnjkfnsjkf";
-        char[] chars = str.toCharArray();
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(char c1 : chars) {
-            if (map.containsKey(c1)){
-                map.put(c1, map.get(c1)+1);
-            } else {
-                map.put(c1,1);
-            }
+
+    public static String textType11(String str) {
+
+        if(str.length()<1){
+            return str;
         }
-        System.out.print(map);
+        return textType11(str.substring(1))+str.charAt(0);
+    }
+
+    public static void main(String args[]) {
+        String str = "batman";
+        System.out.print(textType11(str));
     }
 
 
@@ -224,7 +223,6 @@ public class Java_Samples {
             } else {
                 nonDuplicate.add(values);
             }
-
         }
         System.out.print(nonDuplicate);
     }
