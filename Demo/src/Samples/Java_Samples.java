@@ -82,27 +82,24 @@ public class Java_Samples {
 
     }
 
-    public static  String samples(String str, char c) {
-        String r = "";
-        char[] c1 = str.toCharArray();
-        for(char c2 : c1){
-            if(c2 != c) {
-                r += c2;
-            }
+    public static String textType11(String str) {
+
+        if(str.length()<1){
+            return str;
         }
-        return r;
+        return textType11(str.substring(1))+str.charAt(0);
     }
 
-    public static void main(String[] args) {
-        String str = "fdgbfb";
-        System.out.print(samples(str, 'b'));
+    public static void main(String args[]) {
+        String str = "batman";
+        System.out.print(textType11(str));
     }
 
 //    @AfterSuite
 //    public void quiet() {
 //        driver.quit();
 //    }
-}
+
 
 
 
@@ -235,19 +232,27 @@ public class Java_Samples {
 //        }
 //        System.out.println(high);
 //    }
-
-//        ArrayList<String> nonDuplicate = new ArrayList<>();
-//        Iterator<String> itr = str.iterator();
-//        while (itr.hasNext()){
-//            String values = itr.next();
-//         if(nonDuplicate.contains(values)) {
-//             str.remove(itr);
-//         } else {
-//             nonDuplicate.add(values);
-//         }
-//
-//        }
-//    System.out.print(nonDuplicate);
+    @Test
+    public static void removeDuplicate() {
+        ArrayList<Integer> str = new ArrayList<>();
+        str.add(34);
+        str.add(345);
+        str.add(3443545);
+        str.add(34);
+        str.add(35);
+        ArrayList<Integer> nonDuplicate = new ArrayList<>();
+        Iterator<Integer> itr = str.iterator();
+        while (itr.hasNext()) {
+            int values = itr.next();
+            if (nonDuplicate.contains(values)) {
+                str.remove(itr);
+            } else {
+                nonDuplicate.add(values);
+            }
+        }
+        System.out.print(nonDuplicate);
+    }
+}
 
 
     //
