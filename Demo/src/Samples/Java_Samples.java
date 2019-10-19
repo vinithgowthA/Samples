@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -55,44 +56,55 @@ public class Java_Samples {
         driver.manage().window().maximize();
         driver.navigate().to("https://login.globalglaze.in/");
 
-        WebElement loginClr = driver.findElement(By.name("ctl00$ContentPlaceHolder1$btn_go"));
-        String clr = loginClr.getCssValue("background-color");
-        if(loginButtoncolor.equals(clr)){
-            loginClr.click();
-            Thread.sleep(1000);
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
-            Thread.sleep(5000);
-
-            WebElement userName = driver.findElement(By.name("ctl00$ContentPlaceHolder1$usernm"));
-            userName.sendKeys("ewfwewfe");
-            Thread.sleep(1000);
-            WebElement pwd = driver.findElement(By.id("ctl00_ContentPlaceHolder1_adminpassword"));
-            pwd.sendKeys("sdfsfdgreg");
-            Thread.sleep(2000);
-            loginClr.click();
-            Thread.sleep(2000);
-            Alert alert1 = driver.switchTo().alert();
-            alert1.accept();
-            Thread.sleep(5000);
-        }
-        else {
-            System.out.print("Wrong");
-        }
+        String color = driver.findElement(By.name("ctl00$ContentPlaceHolder1$btn_go")).getCssValue("background-color");
+        String[] numbers = color.replace("rgba(", "").replace(")", "").split(",");
+        int r = Integer.parseInt(numbers[0].trim());
+        int g = Integer.parseInt(numbers[1].trim());
+        int b = Integer.parseInt(numbers[2].trim());
+        int a = Integer.parseInt(numbers[3].trim());
+        System.out.println("r: " + r + "g: " + g + "b: " + b);
+        String hex = "#" + Integer.toHexString(r) + Integer.toHexString(g) + Integer.toHexString(b) + Integer.toHexString(a);
+        System.out.println(hex);
+//        if(loginButtoncolor.equals(clr)){
+//            color.click();
+//            Thread.sleep(1000);
+//            Alert alert = driver.switchTo().alert();
+//            alert.accept();
+//            Thread.sleep(5000);
+//
+//            WebElement userName = driver.findElement(By.name("ctl00$ContentPlaceHolder1$usernm"));
+//            userName.sendKeys("ewfwewfe");
+//            Thread.sleep(1000);
+//            WebElement pwd = driver.findElement(By.id("ctl00_ContentPlaceHolder1_adminpassword"));
+//            pwd.sendKeys("sdfsfdgreg");
+//            Thread.sleep(2000);
+//            loginClr.click();
+//            Thread.sleep(2000);
+//            Alert alert1 = driver.switchTo().alert();
+//            alert1.accept();
+//            Thread.sleep(5000);
+//        }
+//        else {
+//            System.out.print("Wrong");
+//        }
 
     }
 
-    public static String textType11(String str) {
-
-        if(str.length()<1){
-            return str;
+    @Test
+    public void textType11() {
+        String prime = "";
+        for(int i=0; i <=10;i++) {
+            int counter = 0;
+            for(int j=i; j>=1; j--){
+                if(i%j==0){
+                    counter= counter+1;
+                }
+            }
+            if(counter==2) {
+                System.out.print(i+" ");
+            }
         }
-        return textType11(str.substring(1))+str.charAt(0);
-    }
-
-    public static void main(String args[]) {
-        String str = "batman";
-        System.out.print(textType11(str));
+//        System.out.print(prime);
     }
 
 //    @AfterSuite
@@ -194,22 +206,37 @@ public class Java_Samples {
                 }*/
 
 
-//    public static String removeChar(String str, char c) {
-//        String r = "";
-//       char[] c1 = str.toCharArray();
-//       for (char c3 :c1) {
-//            if (c3 != c) {
-//                r += c3;
-//            }
-//        }
-//         return r;
-//    }
-//
-//    public static void main(String[] args) {
-//        String str1 = "Vinith*s";
-//        System.out.print(removeChar(str1, '*'));
-//    }
-//}
+    public static String removeChar(String str, char c) {
+        String r = "";
+       char[] c1 = str.toCharArray();
+       for (char c3 :c1) {
+//        for(int i=0;i<c1.length;i++) {
+            if (c3 != c) {
+                r += c3;
+            }
+        }
+         return r;
+    }
+
+    public static void main(String[] args) {
+        String str1 = "Vinith*s";
+        System.out.print(removeChar(str1, '*'));
+    }
+
+    @Test
+    public void chars() {
+        String s = "sdfsd";
+        char[] c = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(char c1 : c){
+            if(map.containsKey(c1)) {
+                map.put(c1, map.get(c1)+1);
+            } else
+                map.put(c1,1);
+        }
+        System.out.print(map);
+    }
+
 
 //    @Test
 //    public static void removeDuplicate() {
